@@ -24,7 +24,7 @@ public class ShootingBullets : MonoBehaviour
             {
                 Target target = hit.transform.GetComponent<Target>();
 
-                if (hit.transform.GetComponent<Target>() != null)
+                if (target != null && target.type == Target.Type.mob)
                 {
                     target.IsDamaged(damage);
                     Debug.Log(target.health);

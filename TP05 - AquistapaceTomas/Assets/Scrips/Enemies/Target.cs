@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    public enum Type {
+        mob,
+        bomb
+    }
+    public Type type;
+
     public float health = 100f;
 
     public void IsDamaged(float amount)
