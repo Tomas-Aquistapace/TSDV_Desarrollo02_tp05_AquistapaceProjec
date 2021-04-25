@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &11767414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 11767415}
+  m_Layer: 0
+  m_Name: SpawnBombs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &11767415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11767414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.439, y: -0.006, z: 1.217}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7335307199901393434}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4272644798767720841
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7335307199901393434}
+  - component: {fileID: 4866343710496817392}
   m_Layer: 0
   m_Name: LanzaPelotas
   m_TagString: Untagged
@@ -420,13 +451,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6304773600513007090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09000015, y: -0.6329999, z: 0.3050003}
+  m_LocalPosition: {x: -0.02, y: -0.6329999, z: 0.3050003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2350849018157121153}
+  - {fileID: 11767415}
   m_Father: {fileID: 4272644799391231250}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4866343710496817392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6304773600513007090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f910e889a06b4474794631dc78b83344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPos: {fileID: 11767415}
+  bulletPref: {fileID: 6559701259203801399, guid: e94e4bf6ab293b14d8a19ba4a79a06c4,
+    type: 3}
 --- !u!1 &8060742173746772808
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +485,6 @@ GameObject:
   - component: {fileID: 2350849018157121153}
   - component: {fileID: 331177117221162485}
   - component: {fileID: 202953135312047776}
-  - component: {fileID: 6923641507408201110}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -454,8 +500,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8060742173746772808}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.42900085, y: 0, z: 0.7199993}
-  m_LocalScale: {x: 0.5, y: 0.50000036, z: 0.50000036}
+  m_LocalPosition: {x: -0.4290009, y: 0, z: 0.7199993}
+  m_LocalScale: {x: 0.5, y: 0.7729005, z: 0.50000036}
   m_Children: []
   m_Father: {fileID: 7335307199901393434}
   m_RootOrder: 0
@@ -507,20 +553,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &6923641507408201110
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8060742173746772808}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &8801812579446334452
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8801812579446334452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.09000015, y: -0.63300014, z: 0.3050003}
+  m_LocalPosition: {x: 0.2, y: -0.63300014, z: 0.3050003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5245232701269116634}

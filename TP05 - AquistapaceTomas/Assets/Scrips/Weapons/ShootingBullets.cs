@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootingWeapon : MonoBehaviour
+public class ShootingBullets : MonoBehaviour
 {
     public Transform rayWeapon;
     public float range = 100f;
@@ -16,7 +16,7 @@ public class ShootingWeapon : MonoBehaviour
 
     void Shooting()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire2"))
         {
             RaycastHit hit;
 
