@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShootingBullets : MonoBehaviour
 {
+    public GameObject impactVFX;
     public Transform rayWeapon;
     public float range = 100f;
 
@@ -29,9 +30,10 @@ public class ShootingBullets : MonoBehaviour
                     target.IsDamaged(damage);
                     Debug.Log(target.health);
                 }
+
+                GameObject impactGO = Instantiate(impactVFX, hit.point, Quaternion.LookRotation(hit.normal));
+                Destroy(impactGO, 1f);
             }
         }
-
-        //Debug.DrawRay(rayWeapon.position, rayWeapon.forward * range, Color.blue);
     }
 }
