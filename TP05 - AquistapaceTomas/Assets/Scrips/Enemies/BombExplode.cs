@@ -54,7 +54,6 @@ public class BombExplode : MonoBehaviour
             if (player != null)
             {
                 player.IsDamaged(damage);
-                Debug.Log(player.health);
             }
         }
     }
