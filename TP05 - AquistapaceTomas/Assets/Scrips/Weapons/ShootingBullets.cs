@@ -31,6 +31,8 @@ public class ShootingBullets : MonoBehaviour
                     Debug.Log(target.health);
                 }
 
+                Debug.Log(hit.transform.name);
+
                 GameObject impactGO = Instantiate(impactVFX, hit.point, Quaternion.LookRotation(hit.normal));
                 Destroy(impactGO, 1f);
             }

@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 4272644799513785701}
   - component: {fileID: 4272644798437605480}
   - component: {fileID: 4742220632152432877}
+  - component: {fileID: 8045109796264470169}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -347,6 +348,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weapon_1: {fileID: 8801812579446334452}
   Weapon_2: {fileID: 6304773600513007090}
+--- !u!114 &8045109796264470169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4272644799513785702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5f429fe8834794ca9a37edf0b9a492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  armor: 50
+  MaxHealth: 100
+  MaxArmor: 50
 --- !u!1 &6304773600513007090
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,8 +456,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c072a345e7052e5469bc45faa4f29513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactVFX: {fileID: 8987519634266163626, guid: 45ecae65e4af3fb44b2c59deec2eb9e4,
+    type: 3}
   rayWeapon: {fileID: 4272644799391231250}
-  range: 100
+  range: 10
   damage: 10
 --- !u!1001 &432983566528985899
 PrefabInstance:
