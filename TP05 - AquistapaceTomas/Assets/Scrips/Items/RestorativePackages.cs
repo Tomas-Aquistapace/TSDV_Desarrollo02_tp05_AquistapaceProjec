@@ -4,12 +4,12 @@ public class RestorativePackages : MonoBehaviour
 {
     public enum Type {
         Healer,
-        Armor
+        Armor,
+        Points
     }
     public Type type;
-    
-    public float amountHealth = 50f;
-    public float amountArmor = 10f;
+
+    public float amount = 50f;
 
     void OnTriggerEnter(Collider other)
     {
@@ -21,16 +21,17 @@ public class RestorativePackages : MonoBehaviour
             {
                 case Type.Healer:
 
-                    player.RestoreHealth(amountHealth);
-
-                    Debug.Log(player.health);
+                    player.RestoreHealth(amount);
 
                     break;
                 case Type.Armor:
 
-                    player.RestoreArmor(amountArmor);
+                    player.RestoreArmor(amount);
 
-                    Debug.Log(player.armor);
+                    break;
+                case Type.Points:
+
+                    player.SetPoints(amount);
 
                     break;
             }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ChangeWeapon : MonoBehaviour
 {
@@ -20,15 +18,18 @@ public class ChangeWeapon : MonoBehaviour
 
     void ChangeWeapons()
     {
-        if (Input.GetKeyDown("1"))
+        if (!transform.GetComponent<PlayerStats>().GetIsDead())
         {
-            Weapon_2.SetActive(false);
-            Weapon_1.SetActive(true);
-        }
-        if (Input.GetKeyDown("2"))
-        {
-            Weapon_1.SetActive(false);
-            Weapon_2.SetActive(true);
+            if (Input.GetKeyDown("1"))
+            {
+                Weapon_2.SetActive(false);
+                Weapon_1.SetActive(true);
+            }
+            if (Input.GetKeyDown("2"))
+            {
+                Weapon_1.SetActive(false);
+                Weapon_2.SetActive(true);
+            }
         }
     }
 }

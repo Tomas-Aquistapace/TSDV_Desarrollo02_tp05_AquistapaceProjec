@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShootingBullets : MonoBehaviour
 {
@@ -9,6 +7,8 @@ public class ShootingBullets : MonoBehaviour
     public float range = 100f;
 
     public float damage = 10f;
+
+    public PlayerStats player;
 
     void Update()
     {
@@ -19,22 +19,22 @@ public class ShootingBullets : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            RaycastHit hit;
-
-            if (Physics.Raycast(rayWeapon.position, rayWeapon.forward, out hit, range))
+            if (!player.GetIsDead())
             {
-                Target target = hit.transform.GetComponent<Target>();
+                RaycastHit hit;
 
-                if (target != null && target.type == Target.Type.mob)
+                if (Physics.Raycast(rayWeapon.position, rayWeapon.forward, out hit, range))
                 {
-                    target.IsDamaged(damage);
-                    Debug.Log(target.health);
+                    Target target = hit.transform.GetComponent<Target>();
+
+                    if (target != null && target.type == Target.Type.mob)
+                    {
+                        target.IsDamaged(damage);
+                    }
+
+                    GameObject impactGO = Instantiate(impactVFX, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(impactGO, 1f);
                 }
-
-                Debug.Log(hit.transform.name);
-
-                GameObject impactGO = Instantiate(impactVFX, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impactGO, 1f);
             }
         }
     }

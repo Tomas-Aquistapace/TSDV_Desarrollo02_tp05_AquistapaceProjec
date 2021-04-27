@@ -364,6 +364,7 @@ MonoBehaviour:
   armor: 50
   MaxHealth: 100
   MaxArmor: 50
+  totalPoints: 0
 --- !u!1 &6304773600513007090
 GameObject:
   m_ObjectHideFlags: 0

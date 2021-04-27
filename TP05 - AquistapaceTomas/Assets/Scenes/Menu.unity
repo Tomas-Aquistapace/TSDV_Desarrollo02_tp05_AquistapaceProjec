@@ -429,7 +429,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1582060399}
-        m_MethodName: PlayMainGame
+        m_MethodName: RunScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -746,7 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c343818b5faff044ab93f69169e52892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainGame: Main
+  scene: MainGame
 --- !u!4 &1582060400
 Transform:
   m_ObjectHideFlags: 0

@@ -9,6 +9,18 @@ public class PlayerStats : MonoBehaviour
     public float MaxHealth = 100f;
     public float MaxArmor = 50f;
 
+    [Header("Poits")]
+    public float totalPoints = 0f;
+    public int totalKills = 0;
+
+    bool isDead;
+
+    void Start()
+    {
+        isDead = false;
+        totalPoints = 0;
+    }
+
     public void IsDamaged(float amount)
     {
         if (armor > 0)
@@ -24,7 +36,12 @@ public class PlayerStats : MonoBehaviour
         if (armor <= 0)
         {
             health -= amount;
+            if (health <= 0)
+            {
+                SetIsDead(true);
+            }
         }
+
     }
 
     public void RestoreHealth(float amount)
@@ -48,4 +65,12 @@ public class PlayerStats : MonoBehaviour
                 armor = MaxArmor;
         }
     }
+
+    public void SetPoints(float amount) { totalPoints += amount; }
+
+    public void SetKills() { totalKills++; }
+
+    public void SetIsDead(bool value) { isDead = value; }
+
+    public bool GetIsDead() { return isDead; }
 }
