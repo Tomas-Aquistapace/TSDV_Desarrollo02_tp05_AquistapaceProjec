@@ -22,12 +22,12 @@ public class ShootingBullets : MonoBehaviour
             if (!player.GetIsDead())
             {
                 RaycastHit hit;
-
+                
                 if (Physics.Raycast(rayWeapon.position, rayWeapon.forward, out hit, range))
                 {
                     Target target = hit.transform.GetComponent<Target>();
 
-                    if (target != null && target.type == Target.Type.mob)
+                    if (target != null && target.type == Target.Type.bomb)
                     {
                         target.IsDamaged(damage);
                     }

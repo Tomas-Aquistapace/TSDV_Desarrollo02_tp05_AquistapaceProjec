@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1565056701}
   - component: {fileID: 1565056705}
   - component: {fileID: 1565056706}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Blast_Radius
   m_TagString: Blast
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 6795442951880213840}
   m_Layer: 0
   m_Name: Enemy-Bomb
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
