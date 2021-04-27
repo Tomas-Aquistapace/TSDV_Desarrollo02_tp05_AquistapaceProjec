@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnBombs : MonoBehaviour
+public class SpawnObjects : MonoBehaviour
 {
-    public GameObject spawnObj;
+    public List<GameObject> spawnObj = new List<GameObject>();
+    //public GameObject spawnObj;
 
     public float distanceBetweenObj = 3f;
     public float timeBetweenObj = 3f;
     public float maxObj = 10f;
 
+    [HideInInspector]
     public List<GameObject> listObj = new List<GameObject>();
 
+    float multipliScale = 5f;
     float actualTime;
     int actualObj;
 
@@ -28,6 +31,15 @@ public class SpawnBombs : MonoBehaviour
 
     void InstantiateNewObj()
     {
+        for (int i = 0; i < listObj.Count; i++)
+        {
+            if (listObj[i] == null)
+            {
+                listObj.RemoveAt(i);
+                actualObj--;
+            }
+        }
+
         if (actualObj < maxObj)
         {
             if (actualTime < timeBetweenObj)
@@ -42,11 +54,10 @@ public class SpawnBombs : MonoBehaviour
 
                 do
                 {
-                    newPos = new Vector3(Random.Range(transform.position.x - transform.localScale.x, transform.position.x + transform.localScale.x),
+                    newPos = new Vector3(Random.Range(transform.position.x - transform.localScale.x * multipliScale, transform.position.x + transform.localScale.x * multipliScale),
                                          transform.position.y,
-                                         Random.Range(transform.position.z - transform.localScale.z, transform.position.z + transform.localScale.z));
+                                         Random.Range(transform.position.z - transform.localScale.z * multipliScale, transform.position.z + transform.localScale.z * multipliScale));
 
-                    //Debug.Log("nueva pos: " + newPos);
                     if (listObj.Count > 0)
                     {
                         foreach (GameObject i in listObj)
@@ -54,12 +65,6 @@ public class SpawnBombs : MonoBehaviour
                             if (Vector3.Distance(newPos, i.transform.position) > distanceBetweenObj)
                                 count++;
                         }
-
-                        //for (int i = 0; i < listObj.Count + 1; i++)
-                        //{
-                        //    if (Vector3.Distance(newPos, listObj[i].transform.position) > distanceBetweenObj)
-                        //        count++;
-                        //}
                     }
                     else
                     {
@@ -76,12 +81,13 @@ public class SpawnBombs : MonoBehaviour
                         count = 0;
                     }
 
-
                 } while (exit == false);
                 
-                GameObject go = Instantiate(spawnObj, newPos, Quaternion.Euler(transform.forward));
-                listObj.Add(go);
+                int ran = Random.Range(0, spawnObj.Count);
 
+                GameObject go = Instantiate(spawnObj[ran], newPos, Quaternion.Euler(transform.forward));
+                listObj.Add(go);
+                
                 actualObj++;
 
                 actualTime = 0;

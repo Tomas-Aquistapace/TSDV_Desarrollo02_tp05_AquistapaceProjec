@@ -10,8 +10,7 @@ public class UImanager : MonoBehaviour
     public TextMeshProUGUI textArmor;
     public TextMeshProUGUI textPoints;
     public TextMeshProUGUI textKills;
-
-
+    
     [Header("Final Score")]
     public GameObject defeated;
     public TextMeshProUGUI textFinalPoints;

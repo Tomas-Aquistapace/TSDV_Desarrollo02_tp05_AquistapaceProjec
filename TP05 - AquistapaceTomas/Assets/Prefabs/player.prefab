@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 4272644799513785698}
-  speedMovement: 8
+  speedMovement: 10
   gravity: -20
   jumpheight: 3
   groundCheck: {fileID: 4272644799168786775}
@@ -365,6 +365,7 @@ MonoBehaviour:
   MaxHealth: 100
   MaxArmor: 50
   totalPoints: 0
+  totalKills: 0
 --- !u!1 &6304773600513007090
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +414,7 @@ MonoBehaviour:
   initialPos: {fileID: 11767415}
   bulletPref: {fileID: 6559701259203801399, guid: e94e4bf6ab293b14d8a19ba4a79a06c4,
     type: 3}
+  player: {fileID: 8045109796264470169}
 --- !u!1 &8801812579446334452
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +464,7 @@ MonoBehaviour:
   rayWeapon: {fileID: 4272644799391231250}
   range: 10
   damage: 10
+  player: {fileID: 8045109796264470169}
 --- !u!1001 &432983566528985899
 PrefabInstance:
   m_ObjectHideFlags: 0
