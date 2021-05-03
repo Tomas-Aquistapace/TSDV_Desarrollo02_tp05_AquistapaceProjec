@@ -7,7 +7,9 @@ public class BombsForce : MonoBehaviour
     public Rigidbody rig;
     public float force = 20f;
     public float damage = 10f;
-    
+
+    public Target.Type type;
+
     void Start()
     {
         rig.AddForce(transform.forward * force, ForceMode.Impulse);
@@ -17,9 +19,9 @@ public class BombsForce : MonoBehaviour
     {
         Target target = collision.transform.GetComponent<Target>();
 
-        if (target != null && target.type == Target.Type.bomb)
+        if (target != null && target.type == type)
         {
-            target.IsDamaged(damage);
+            target.TakeDamage(damage);
             Destroy(this.gameObject);
         }
         else

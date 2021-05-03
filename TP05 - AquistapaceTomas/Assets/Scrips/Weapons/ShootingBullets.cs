@@ -10,6 +10,8 @@ public class ShootingBullets : MonoBehaviour
 
     public PlayerStats player;
 
+    public Target.Type type;
+
     void Update()
     {
         Shooting();
@@ -27,9 +29,9 @@ public class ShootingBullets : MonoBehaviour
                 {
                     Target target = hit.transform.GetComponent<Target>();
 
-                    if (target != null && target.type == Target.Type.bomb)
+                    if (target != null && target.type == type)
                     {
-                        target.IsDamaged(damage);
+                        target.TakeDamage(damage);
                     }
 
                     GameObject impactGO = Instantiate(impactVFX, hit.point, Quaternion.LookRotation(hit.normal));

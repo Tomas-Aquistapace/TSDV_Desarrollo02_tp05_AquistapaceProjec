@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour , IDamaged
 {
     [Header("Basic Stats")]
     public float health = 100f;
@@ -15,13 +15,25 @@ public class PlayerStats : MonoBehaviour
 
     bool isDead;
 
+    void OnEnable()
+    {
+        Target.Dead += SetKills;
+        Target.Dead += SetPoints;
+    }
+
+    void OnDisable()
+    {
+        Target.Dead -= SetKills;
+        Target.Dead -= SetPoints;
+    }
+
     void Start()
     {
         isDead = false;
         totalPoints = 0;
     }
 
-    public void IsDamaged(float amount)
+    public void TakeDamage(float amount)
     {
         if (armor > 0)
         {
@@ -41,7 +53,6 @@ public class PlayerStats : MonoBehaviour
                 SetIsDead(true);
             }
         }
-
     }
 
     public void RestoreHealth(float amount)
@@ -68,7 +79,7 @@ public class PlayerStats : MonoBehaviour
 
     public void SetPoints(float amount) { totalPoints += amount; }
 
-    public void SetKills() { totalKills++; }
+    public void SetKills(float unused) { totalKills++; }
 
     public void SetIsDead(bool value) { isDead = value; }
 

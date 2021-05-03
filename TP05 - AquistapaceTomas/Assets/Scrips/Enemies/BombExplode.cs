@@ -47,13 +47,13 @@ public class BombExplode : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        PlayerStats player = other.transform.GetComponent<PlayerStats>();
+        PlayerStats playerGO = other.transform.GetComponent<PlayerStats>();
 
         if (activate == true && timeCount >= timeToExplode)
         {
-            if (player != null)
+            if (playerGO != null)
             {
-                player.IsDamaged(damage);
+                playerGO.TakeDamage(damage);
             }
         }
     }

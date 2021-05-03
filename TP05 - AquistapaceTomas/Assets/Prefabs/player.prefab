@@ -465,6 +465,7 @@ MonoBehaviour:
   range: 10
   damage: 10
   player: {fileID: 8045109796264470169}
+  type: 1
 --- !u!1001 &432983566528985899
 PrefabInstance:
   m_ObjectHideFlags: 0

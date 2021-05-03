@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnObjects : MonoBehaviour
 {
     public List<GameObject> spawnObj = new List<GameObject>();
-    //public GameObject spawnObj;
 
     public float distanceBetweenObj = 3f;
     public float timeBetweenObj = 3f;
@@ -31,19 +30,11 @@ public class SpawnObjects : MonoBehaviour
 
     void InstantiateNewObj()
     {
-        for (int i = 0; i < listObj.Count; i++)
-        {
-            if (listObj[i] == null)
-            {
-                listObj.RemoveAt(i);
-                actualObj--;
-            }
-        }
+        CleanList();
 
         if (actualObj < maxObj)
         {
-            if (actualTime < timeBetweenObj)
-                actualTime += 1f * Time.deltaTime;
+            Timer();
 
             if (actualTime >= timeBetweenObj)
             {
@@ -91,6 +82,24 @@ public class SpawnObjects : MonoBehaviour
                 actualObj++;
 
                 actualTime = 0;
+            }
+        }
+    }
+
+    void Timer()
+    {
+        if (actualTime < timeBetweenObj)
+            actualTime += 1f * Time.deltaTime;
+    }
+
+    void CleanList()
+    {
+        for (int i = 0; i < listObj.Count; i++)
+        {
+            if (listObj[i] == null)
+            {
+                listObj.RemoveAt(i);
+                actualObj--;
             }
         }
     }

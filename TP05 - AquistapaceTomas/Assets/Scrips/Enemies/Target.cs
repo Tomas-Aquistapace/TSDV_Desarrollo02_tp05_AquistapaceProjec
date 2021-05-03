@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class Target : MonoBehaviour
+public class Target : MonoBehaviour, IDamaged
 {
-    [Header("Player")]
-    public GameObject player;
-
+    public delegate void DeadEvent(float points);
+    public static DeadEvent Dead;
+    
     public enum Type {
         mob,
         bomb
@@ -15,18 +15,17 @@ public class Target : MonoBehaviour
     public float health = 100f;
     public float points = 100f;
 
-    public void IsDamaged(float amount)
+    public void TakeDamage(float amount)
     {
         health -= amount;
 
         if (health <= 0f)
-            Dead();
+            Die();
     }
 
-    void Dead()
+    void Die()
     {
-        player.GetComponent<PlayerStats>().SetPoints(points);
-        player.GetComponent<PlayerStats>().SetKills();
+        Dead(points);
         Destroy(gameObject);
     }
 }
