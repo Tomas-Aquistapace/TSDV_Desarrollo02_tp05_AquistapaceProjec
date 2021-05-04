@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 6810734521467661094}
   - component: {fileID: 6810734521467661095}
   - component: {fileID: 6810734521467661092}
+  - component: {fileID: 2484654182917800056}
   - component: {fileID: 6810734521467661097}
+  - component: {fileID: 3663578648236702959}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy-Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6810734521467661090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 29.16494, y: 1.17, z: 20.725115}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,6 +97,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2484654182917800056
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810734521467661090}
+  serializedVersion: 2
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!114 &6810734521467661097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +125,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4864871ef366c48856b8a12080ba4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8045109796264470169, guid: 40d9ee831797e0743b9f6f11ffd02ca1, type: 3}
   type: 0
-  health: 50
-  points: 100
+  health: 30
+  points: 150
+--- !u!114 &3663578648236702959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810734521467661090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3418181629454534bafa5e16d2dba93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMove: 50
+  damage: 75

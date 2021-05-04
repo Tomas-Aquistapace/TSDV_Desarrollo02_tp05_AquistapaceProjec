@@ -51,6 +51,7 @@ public class PlayerStats : MonoBehaviour , IDamaged
             if (health <= 0)
             {
                 SetIsDead(true);
+                SetHighScore();
             }
         }
     }
@@ -84,4 +85,12 @@ public class PlayerStats : MonoBehaviour , IDamaged
     public void SetIsDead(bool value) { isDead = value; }
 
     public bool GetIsDead() { return isDead; }
+
+    public void SetHighScore()
+    {
+        if (SingletonManager.Instance.highScore < totalPoints)
+        {
+            SingletonManager.Instance.highScore = totalPoints;
+        }
+    }
 }
