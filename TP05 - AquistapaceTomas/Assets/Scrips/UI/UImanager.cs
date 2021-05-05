@@ -16,13 +16,31 @@ public class UImanager : MonoBehaviour
     public TextMeshProUGUI textFinalPoints;
     public TextMeshProUGUI textFinalKills;
 
-    [Header("Player Stats")]
-    public PlayerStats player;
+    PlayerStats player;
 
     private void Start()
     {
+        player = PlayerManager.instance.player.GetComponent<PlayerStats>();
+
         playing.SetActive(true);
         defeated.SetActive(false);
+
+        ChangeLife();
+        ChangePoints();
+    }
+
+    void OnEnable()
+    {
+        PlayerStats.RefreshLife += ChangeLife;
+        PlayerStats.RefreshPoints += ChangePoints;
+        PlayerStats.RefreshFinalPoints += ChangeFinalPoints;
+    }
+
+    void OnDisable()
+    {
+        PlayerStats.RefreshLife -= ChangeLife;
+        PlayerStats.RefreshPoints -= ChangePoints;
+        PlayerStats.RefreshFinalPoints -= ChangeFinalPoints;
     }
 
     void Update()
@@ -32,20 +50,28 @@ public class UImanager : MonoBehaviour
 
     void Playing()
     {
-        if (!player.GetIsDead())
-        {
-            textHealth.text = player.health.ToString();
-            textArmor.text = player.armor.ToString();
-            textPoints.text = player.totalPoints.ToString();
-            textKills.text = player.totalKills.ToString();
-        }
-        else
+        if (player.GetIsDead())
         {
             playing.SetActive(false);
             defeated.SetActive(true);
-
-            textFinalPoints.text = player.totalPoints.ToString();
-            textFinalKills.text = player.totalKills.ToString();
         }
+    }
+
+    void ChangeLife()
+    {
+        textHealth.text = player.health.ToString();
+        textArmor.text = player.armor.ToString();
+    }
+
+    void ChangePoints()
+    {
+        textPoints.text = player.totalPoints.ToString();
+        textKills.text = player.totalKills.ToString();
+    }
+
+    void ChangeFinalPoints()
+    {
+        textFinalPoints.text = player.totalPoints.ToString();
+        textFinalKills.text = player.totalKills.ToString();
     }
 }

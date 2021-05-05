@@ -2,6 +2,11 @@
 
 public class PlayerStats : MonoBehaviour , IDamaged
 {
+    public delegate void RefreshValues();
+    public static RefreshValues RefreshLife;
+    public static RefreshValues RefreshPoints;
+    public static RefreshValues RefreshFinalPoints;
+
     [Header("Basic Stats")]
     public float health = 100f;
     public float armor = 50f;
@@ -54,6 +59,8 @@ public class PlayerStats : MonoBehaviour , IDamaged
                 SetHighScore();
             }
         }
+
+        RefreshLife();
     }
 
     public void RestoreHealth(float amount)
@@ -65,6 +72,8 @@ public class PlayerStats : MonoBehaviour , IDamaged
             if (health > MaxHealth)
                 health = MaxHealth;
         }
+
+        RefreshLife();
     }
 
     public void RestoreArmor(float amount)
@@ -76,13 +85,27 @@ public class PlayerStats : MonoBehaviour , IDamaged
             if (armor > MaxArmor)
                 armor = MaxArmor;
         }
+
+        RefreshLife();
     }
 
-    public void SetPoints(float amount) { totalPoints += amount; }
+    public void SetPoints(float amount)
+    {
+        totalPoints += amount;
+        RefreshPoints();
+    }
 
-    public void SetKills(float unused) { totalKills++; }
+    public void SetKills(float unused)
+    {
+        totalKills++;
+        RefreshPoints();
+    }
 
-    public void SetIsDead(bool value) { isDead = value; }
+    public void SetIsDead(bool value)
+    {
+        isDead = value;
+        RefreshFinalPoints();
+    }
 
     public bool GetIsDead() { return isDead; }
 

@@ -15,7 +15,7 @@ public class GhostBehavior : MonoBehaviour
 
     void Start()
     {
-        target = PlayerManager.instance.player;
+        target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
 
         goARandomPos = false;

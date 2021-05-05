@@ -8,6 +8,5 @@ public class PlayerManager : MonoBehaviour
         instance = this;
     }
 
-
-    public Transform player;
+    public GameObject player;
 }
