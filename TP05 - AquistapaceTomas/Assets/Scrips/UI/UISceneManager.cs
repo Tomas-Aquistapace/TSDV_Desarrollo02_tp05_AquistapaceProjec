@@ -10,4 +10,9 @@ public class UISceneManager : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

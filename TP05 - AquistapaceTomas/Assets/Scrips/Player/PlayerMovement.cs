@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
             Gravity();
             Jump();
             Movement();
+            InputExitGame();
         }
     }
 
@@ -56,6 +58,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpheight * -2f * gravity);
+        }
+    }
+
+    void InputExitGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PlayerManager.instance.player.GetComponent<PlayerStats>().SetIsDead(true);
         }
     }
 }

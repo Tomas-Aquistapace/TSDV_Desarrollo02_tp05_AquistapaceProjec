@@ -27,6 +27,8 @@ public class UImanager : MonoBehaviour
 
         ChangeLife();
         ChangePoints();
+
+        Cursor.visible = false;
     }
 
     void OnEnable()
@@ -54,6 +56,7 @@ public class UImanager : MonoBehaviour
         {
             playing.SetActive(false);
             defeated.SetActive(true);
+            Cursor.visible = true;
         }
     }
 
